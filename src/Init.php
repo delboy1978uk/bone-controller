@@ -5,13 +5,15 @@ namespace Bone\Controller;
 use Barnacle\Container;
 use Bone\I18n\I18nAwareInterface;
 use Bone\Controller\Controller;
-use Bone\View\PlatesEngine;
+use Bone\View\ViewEngine;
+use Bone\Log\LoggerAwareInterface;
 use Bone\Server\SessionAwareInterface;
 use Bone\Server\SiteConfig;
 use Bone\Server\SiteConfigAwareInterface;
 use Bone\View\ViewAwareInterface;
 use Del\SessionManager;
 use Laminas\I18n\Translator\Translator;
+use Psr\Log\LoggerInterface;
 
 class Init
 {
@@ -27,7 +29,7 @@ class Init
         }
 
         if ($controller instanceof ViewAwareInterface) {
-            $controller->setView($container->get(PlatesEngine::class));
+            $controller->setView($container->get(ViewEngine::class));
         }
 
         if ($controller instanceof SiteConfigAwareInterface) {
@@ -36,6 +38,13 @@ class Init
 
         if ($controller instanceof SessionAwareInterface) {
             $controller->setSession($container->get(SessionManager::class));
+        }
+
+        if ($controller instanceof LoggerAwareInterface) {
+            $channel = $controller->getChannel();
+            $loggers = $container->get(LoggerInterface::class);
+            $logger = in_array($channel, $loggers) ? $loggers['channel'] : $loggers['default'];
+            $controller->setLogger($logger);
         }
 
         return $controller;
