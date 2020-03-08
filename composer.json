@@ -1,6 +1,6 @@
 {
-    "name": "delboy1978uk\/bone-controller",
-    "description": "Controller package for Bone MVC Framework",
+    "name": "delboy1978uk/bone-controller",
+    "description": "Controller package for Bone Framework",
     "license": "MIT",
     "authors": [
         {
@@ -10,7 +10,7 @@
     ],
     "require": {},
     "require-dev": {
-        "roave\/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master"
     },
     "autoload": {
         "psr-4": {
