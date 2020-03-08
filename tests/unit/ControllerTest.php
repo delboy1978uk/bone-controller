@@ -26,7 +26,8 @@ class ControllerTest extends Test
     public function testDownloadController()
     {
         $controller = new DownloadController('tests/_data');
-        $request = new ServerRequest(new Uri('/download?file=logo.png'));
+        $request = new ServerRequest();
+        $request = $request->withQueryParams(['file' => 'tests/_data/logo.png']);
         $response = $controller->downloadAction($request);
         $this->assertEquals('image/png', $response->getHeader('Content-Type'));
     }
