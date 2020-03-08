@@ -2,7 +2,6 @@
 
 namespace Bone\Controller;
 
-use Bone\Exception;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -27,7 +26,7 @@ class DownloadController
      * @param ServerRequestInterface $request
      * @param array $args
      * @return ResponseInterface
-     * @throws Exception
+     * @throws ControllerException
      */
     public function downloadAction(ServerRequestInterface $request, array $args): ResponseInterface
     {
@@ -60,7 +59,7 @@ class DownloadController
     /**
      * @param array $queryParams
      * @return string
-     * @throws Exception
+     * @throws ControllerException
      */
     private function getFilePath(array $queryParams): string
     {
@@ -74,7 +73,7 @@ class DownloadController
         if (file_exists('public' . $file)) {
             $path = 'public' . $file;
         } else if (!file_exists($path)) {
-            throw new Exception($path . ' not found.', 404);
+            throw new ControllerException($path . ' not found.', 404);
         }
 
         return $path;
