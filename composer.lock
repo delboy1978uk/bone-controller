@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67a24f736c27ae678f45e0742aa0c4fc",
+    "content-hash": "058ede1d32394eee4b18874a3fc7a52a",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -196,6 +196,42 @@
             ],
             "description": "Server package for Bone Framework",
             "time": "2020-03-05T12:12:21+00:00"
+        },
+        {
+            "name": "delboy1978uk/bone-traits",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/delboy1978uk/bone-traits.git",
+                "reference": "7a9a8c8df6f9b28874769386adc1ed81d59181bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/delboy1978uk/bone-traits/zipball/7a9a8c8df6f9b28874769386adc1ed81d59181bf",
+                "reference": "7a9a8c8df6f9b28874769386adc1ed81d59181bf",
+                "shasum": ""
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bone\\Traits\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Derek Stephen McLean",
+                    "email": "delboy1978uk@gmail.com"
+                }
+            ],
+            "description": "Traits for Bone Framework",
+            "time": "2020-03-05T14:12:41+00:00"
         },
         {
             "name": "delboy1978uk/bone-view",
@@ -1153,6 +1189,53 @@
                 "response"
             ],
             "time": "2016-08-06T14:39:51+00:00"
+        },
+        {
+            "name": "psr/log",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2019-11-01T11:05:21+00:00"
         }
     ],
     "packages-dev": [
