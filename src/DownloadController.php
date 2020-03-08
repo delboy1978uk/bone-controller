@@ -64,7 +64,7 @@ class DownloadController
     private function getFilePath(array $queryParams): string
     {
         if (!isset($queryParams['file'])) {
-            throw new Exception('Invalid Request.', 400);
+            throw new ControllerException('Invalid Request.', 400);
         }
 
         $file = $queryParams['file'];
