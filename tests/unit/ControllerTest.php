@@ -5,7 +5,7 @@ namespace Barnacle\Tests;
 use Barnacle\Container;
 use Bone\Controller\DownloadController;
 use Codeception\TestCase\Test;
-use Laminas\Diactoros\Request;
+use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\Uri;
 
 class ControllerTest extends Test
@@ -26,7 +26,7 @@ class ControllerTest extends Test
     public function testDownloadController()
     {
         $controller = new DownloadController('tests/_data');
-        $request = new Request(new Uri('/download?file=logo.png'));
+        $request = new ServerRequest(new Uri('/download?file=logo.png'));
         $response = $controller->downloadAction($request);
         $this->assertEquals('image/png', $response->getHeader('Content-Type'));
     }
