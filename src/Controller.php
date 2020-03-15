@@ -3,9 +3,9 @@
 namespace Bone\Controller;
 
 use Bone\I18n\I18nAwareInterface;
-use Bone\Traits\HasSiteConfigTrait;
-use Bone\Traits\HasTranslatorTrait;
-use Bone\Traits\HasViewTrait;
+use Bone\Server\Traits\HasSiteConfigTrait;
+use Bone\I18n\Traits\HasTranslatorTrait;
+use Bone\View\Traits\HasViewTrait;
 use Bone\View\ViewAwareInterface;
 use Bone\Server\SiteConfigAwareInterface;
 

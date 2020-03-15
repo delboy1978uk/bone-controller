@@ -8,11 +8,11 @@ use Bone\Log\LoggerAwareInterface;
 use Bone\Server\SessionAwareInterface;
 use Bone\Server\SiteConfig;
 use Bone\Server\SiteConfigAwareInterface;
-use Bone\Traits\HasLoggerTrait;
-use Bone\Traits\HasSessionTrait;
-use Bone\Traits\HasSiteConfigTrait;
-use Bone\Traits\HasTranslatorTrait;
-use Bone\Traits\HasViewTrait;
+use Bone\Log\Traits\HasLoggerTrait;
+use Bone\Server\Traits\HasSessionTrait;
+use Bone\Server\Traits\HasSiteConfigTrait;
+use Bone\I18n\Traits\HasTranslatorTrait;
+use Bone\View\Traits\HasViewTrait;
 use Bone\View\ViewAwareInterface;
 
 class FakeController extends Controller implements I18nAwareInterface, ViewAwareInterface, SiteConfigAwareInterface, SessionAwareInterface, LoggerAwareInterface
