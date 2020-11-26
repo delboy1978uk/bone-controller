@@ -20,7 +20,7 @@ class Controller implements I18nAwareInterface, ViewAwareInterface, SiteConfigAw
      * @param ResponseInterface $response
      * @param string $layout
      */
-    public function responseWithLayout(ResponseInterface $response, string $layout)
+    public function responseWithLayout(ResponseInterface $response, string $layout): ResponseInterface
     {
         return $response->withHeader('layout', $layout);
     }
