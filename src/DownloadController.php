@@ -24,11 +24,10 @@ class DownloadController
 
     /**
      * @param ServerRequestInterface $request
-     * @param array $args
      * @return ResponseInterface
      * @throws ControllerException
      */
-    public function downloadAction(ServerRequestInterface $request, array $args): ResponseInterface
+    public function downloadAction(ServerRequestInterface $request): ResponseInterface
     {
         $queryParams = $request->getQueryParams();
         $path = $this->getFilePath($queryParams);
