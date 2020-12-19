@@ -3,9 +3,10 @@
 namespace Bone\Controller;
 
 use Barnacle\Container;
+use Bone\BoneDoctrine\EntityManagerAwareInterface;
+use Bone\Controller\Controller;
 use Bone\Db\DbProviderInterface;
 use Bone\I18n\I18nAwareInterface;
-use Bone\Controller\Controller;
 use Bone\View\ViewEngine;
 use Bone\Log\LoggerAwareInterface;
 use Bone\Server\SessionAwareInterface;
@@ -13,6 +14,7 @@ use Bone\Server\SiteConfig;
 use Bone\Server\SiteConfigAwareInterface;
 use Bone\View\ViewAwareInterface;
 use Del\SessionManager;
+use Doctrine\ORM\EntityManager;
 use Laminas\I18n\Translator\Translator;
 use PDO;
 use Psr\Log\LoggerInterface;
@@ -29,6 +31,7 @@ class Init
         self::i18nCheck($controller, $container);
         self::viewCheck($controller, $container);
         self::pdoCheck($controller, $container);
+        self::entityManagerCheck($controller, $container);
         self::siteConfigCheck($controller, $container);
         self::sessionCheck($controller, $container);
         self::loggerCheck($controller, $container);
@@ -44,6 +47,17 @@ class Init
     {
         if ($controller instanceof DbProviderInterface) {
             $controller->setDb($container->get(PDO::class));
+        }
+    }
+
+    /**
+     * @param \Bone\Controller\Controller $controller
+     * @param Container $container
+     */
+    private static function entityManagerCheck(Controller $controller, Container $container): void
+    {
+        if (in_array('Bone\BoneDoctrine\EntityManagerAwareInterface', class_implements($controller))) {
+            $controller->setEntityManager($container->get(EntityManager::class));
         }
     }
 
