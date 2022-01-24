@@ -1,8 +1,8 @@
 # bone-controller
 [![Latest Stable Version](https://poser.pugx.org/delboy1978uk/bone-controller/v/stable)](https://packagist.org/packages/delboy1978uk/bone-controller) [![Total Downloads](https://poser.pugx.org/delboy1978uk/bone/downloads)](https://packagist.org/packages/delboy1978uk/bone) [![Latest Unstable Version](https://poser.pugx.org/delboy1978uk/bone-controller/v/unstable)](https://packagist.org/packages/delboy1978uk/bone-controller) [![License](https://poser.pugx.org/delboy1978uk/bone-controller/license)](https://packagist.org/packages/delboy1978uk/bone-controller)<br />
-[![Build Status](https://travis-ci.org/delboy1978uk/bone-controller.png?branch=master)](https://travis-ci.org/delboy1978uk/bone-controller) [![Code Coverage](https://scrutinizer-ci.com/g/delboy1978uk/bone-controller/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/bone-controller/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/delboy1978uk/bone-controller/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/bone-controller/?branch=master)<br />
+![build status](https://github.com/delboy1978uk/bone-controller/actions/workflows/master.yml/badge.svg) [![Code Coverage](https://scrutinizer-ci.com/g/delboy1978uk/bone-controller/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/bone-controller/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/delboy1978uk/bone-controller/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/bone-controller/?branch=master)<br />
 
-Controller package for Bone Mvc Framework
+Controller package for Bone Framework
 ## installation
 bone-controller is part of the core functionality of `delboy1978uk/bone`, and as such will already be installed in your
 app.
