@@ -1,6 +1,6 @@
 <?php
 
-namespace Barnacle\Tests;
+namespace Bone\Test\Controller;
 
 use Barnacle\Container;
 use Bone\Controller\ControllerException;
@@ -9,13 +9,15 @@ use Bone\Controller\Init;
 use Bone\Server\SiteConfig;
 use Bone\View\ViewEngine;
 use Bone\View\ViewEngineInterface;
-use BoneTest\FakeController;
+use Bone\Test\Controller\FakeController;
 use Codeception\TestCase\Test;
 use Del\SessionManager;
+use Doctrine\ORM\EntityManager;
 use InvalidArgumentException;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\Uri;
 use Laminas\I18n\Translator\Translator;
+use PDO;
 use Psr\Log\LoggerInterface;
 
 class ControllerInitTest extends Test
@@ -23,9 +25,11 @@ class ControllerInitTest extends Test
     public function testConstructorhrowsException()
     {
         $container = new Container();
-        $container[Translator::class] = $this->getMockBuilder(Translator::class)->getMock();
-        $container[ViewEngine::class] = $this->getMockBuilder(ViewEngine::class)->getMock();
-        $container[SiteConfig::class] = $this->getMockBuilder(SiteConfig::class)->disableOriginalConstructor()->getMock();
+        $container[Translator::class] = $this->makeEmpty(Translator::class);
+        $container[ViewEngine::class] = $this->makeEmpty(ViewEngine::class);
+        $container[SiteConfig::class] = $this->makeEmpty(SiteConfig::class);
+        $container[PDO::class] = $this->makeEmpty(PDO::class);
+        $container[EntityManager::class] = $this->makeEmpty(EntityManager::class);
         $container[SessionManager::class] = SessionManager::getInstance();
         $container[LoggerInterface::class] = [
             'default' => $this->getMockBuilder(LoggerInterface::class)->getMock()
@@ -38,6 +42,8 @@ class ControllerInitTest extends Test
         $this->assertInstanceOf(SiteConfig::class, $controller->getSiteConfig());
         $this->assertInstanceOf(SessionManager::class, $controller->getSession());
         $this->assertInstanceOf(LoggerInterface::class, $controller->getLogger());
+        $this->assertInstanceOf(PDO::class, $controller->getDb());
+        $this->assertInstanceOf(EntityManager::class, $controller->getEntityManager());
     }
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Barnacle\Tests;
+namespace Bone\Test\Controller;
 
 use Barnacle\Container;
 use Bone\Controller\ControllerException;
