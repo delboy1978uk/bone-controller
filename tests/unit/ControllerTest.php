@@ -14,7 +14,7 @@ class ControllerTest extends Test
         $response = $controller->responseWithLayout(new Response(), 'xxx');
         self::assertInstanceOf(ResponseInterface::class, $response);
         self::assertTrue($response->hasHeader('layout'));
-        self::assertEquals('xxx', $response->getHeader('layout'));
+        self::assertEquals('xxx', $response->getHeader('layout')[0]);
     }
 }
 
