@@ -18,7 +18,7 @@
         "delboy1978uk/bone-view": "^1.0",
         "delboy1978uk/session": "^1.1",
         "laminas/laminas-diactoros": "2.*",
-        "psr/log": ">2.0"
+        "psr/log": "^2.0|^3.0"
     },
     "require-dev": {
         "codeception/codeception": "^4.1",
