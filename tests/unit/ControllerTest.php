@@ -3,10 +3,10 @@
 namespace Bone\Test\Controller;
 
 use Bone\Http\Response;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use Psr\Http\Message\ResponseInterface;
 
-class ControllerTest extends Test
+class ControllerTest extends Unit
 {
     public function testGetResponseWithLayout()
     {

@@ -10,7 +10,7 @@ use Bone\Server\SiteConfig;
 use Bone\View\ViewEngine;
 use Bone\View\ViewEngineInterface;
 use Bone\Test\Controller\FakeController;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use Del\SessionManager;
 use Doctrine\ORM\EntityManager;
 use InvalidArgumentException;
@@ -20,7 +20,7 @@ use Laminas\I18n\Translator\Translator;
 use PDO;
 use Psr\Log\LoggerInterface;
 
-class ControllerInitTest extends Test
+class ControllerInitTest extends Unit
 {
     public function testConstructorhrowsException()
     {
