@@ -15,17 +15,14 @@ use Bone\Server\SiteConfigAwareInterface;
 use Bone\View\ViewAwareInterface;
 use Del\SessionManager;
 use Doctrine\ORM\EntityManager;
+use JMS\Serializer\Serializer;
+use JMS\Serializer\SerializerBuilder;
 use Laminas\I18n\Translator\Translator;
 use PDO;
 use Psr\Log\LoggerInterface;
 
 class Init
 {
-    /**
-     * @param Controller $controller
-     * @param Container $container
-     * @return Controller
-     */
     public static function controller(Controller $controller, Container $container): Controller
     {
         self::i18nCheck($controller, $container);
@@ -33,16 +30,13 @@ class Init
         self::pdoCheck($controller, $container);
         self::entityManagerCheck($controller, $container);
         self::siteConfigCheck($controller, $container);
+        self::serializerCheck($controller, $container);
         self::sessionCheck($controller, $container);
         self::loggerCheck($controller, $container);
 
         return $controller;
     }
 
-    /**
-     * @param \Bone\Controller\Controller $controller
-     * @param Container $container
-     */
     private static function pdoCheck(Controller $controller, Container $container): void
     {
         if ($controller instanceof DbProviderInterface) {
@@ -50,10 +44,6 @@ class Init
         }
     }
 
-    /**
-     * @param \Bone\Controller\Controller $controller
-     * @param Container $container
-     */
     private static function entityManagerCheck(Controller $controller, Container $container): void
     {
         if (in_array('Bone\BoneDoctrine\EntityManagerAwareInterface', class_implements($controller))) {
@@ -61,10 +51,6 @@ class Init
         }
     }
 
-    /**
-     * @param \Bone\Controller\Controller $controller
-     * @param Container $container
-     */
     private static function i18nCheck(Controller $controller, Container $container): void
     {
         if ($controller instanceof I18nAwareInterface) {
@@ -72,10 +58,6 @@ class Init
         }
     }
 
-    /**
-     * @param \Bone\Controller\Controller $controller
-     * @param Container $container
-     */
     private static function viewCheck(Controller $controller, Container $container): void
     {
         if ($controller instanceof ViewAwareInterface) {
@@ -83,10 +65,14 @@ class Init
         }
     }
 
-    /**
-     * @param \Bone\Controller\Controller $controller
-     * @param Container $container
-     */
+    private static function serializerCheck(Controller $controller, Container $container): void
+    {
+        if ($controller instanceof SerializerAwareInterface) {
+            $serializer = SerializerBuilder::create()->build();
+            $controller->setSerializer($serializer);
+        }
+    }
+
     private static function siteConfigCheck(Controller $controller, Container $container): void
     {
         if ($controller instanceof SiteConfigAwareInterface) {
@@ -94,10 +80,6 @@ class Init
         }
     }
 
-    /**
-     * @param \Bone\Controller\Controller $controller
-     * @param Container $container
-     */
     private static function sessionCheck(Controller $controller, Container $container): void
     {
         if ($controller instanceof SessionAwareInterface) {
@@ -105,10 +87,6 @@ class Init
         }
     }
 
-    /**
-     * @param \Bone\Controller\Controller $controller
-     * @param Container $container
-     */
     private static function loggerCheck(Controller $controller, Container $container): void
     {
         if ($controller instanceof LoggerAwareInterface) {

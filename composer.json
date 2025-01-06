@@ -17,14 +17,14 @@
         "delboy1978uk/bone-server": "^1.2",
         "delboy1978uk/bone-view": "^1.7",
         "delboy1978uk/session": "^1.6",
+        "jms/serializer": "^3.32",
         "laminas/laminas-diactoros": "^3.3",
         "psr/log": "^3.0"
     },
     "require-dev": {
-        "codeception/codeception": "^5.1",
-        "codeception/module-asserts": "^3.0",
-        "roave/security-advisories": "dev-master",
-        "delboy1978uk/bone-doctrine": "dev-11-switch-to-attributes-for-v2 as 1.9.2"
+        "delboy1978uk/dev-tools": "^v1.0",
+        "roave/security-advisories": "dev-latest",
+        "delboy1978uk/bone-doctrine": "v2.3"
     },
     "autoload": {
         "psr-4": {
@@ -36,5 +36,10 @@
             "Bone\\Test\\Controller\\": "tests/unit/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": false
+        }
+    }
 }
