@@ -3,19 +3,16 @@
 namespace Bone\Controller;
 
 use Barnacle\Container;
-use Bone\BoneDoctrine\EntityManagerAwareInterface;
-use Bone\Controller\Controller;
 use Bone\Db\DbProviderInterface;
 use Bone\I18n\I18nAwareInterface;
-use Bone\View\ViewEngine;
 use Bone\Log\LoggerAwareInterface;
 use Bone\Server\SessionAwareInterface;
 use Bone\Server\SiteConfig;
 use Bone\Server\SiteConfigAwareInterface;
 use Bone\View\ViewAwareInterface;
+use Bone\View\ViewEngineInterface;
 use Del\SessionManager;
 use Doctrine\ORM\EntityManager;
-use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use Laminas\I18n\Translator\Translator;
 use PDO;
@@ -61,7 +58,7 @@ class Init
     private static function viewCheck(Controller $controller, Container $container): void
     {
         if ($controller instanceof ViewAwareInterface) {
-            $controller->setView($container->get(ViewEngine::class));
+            $controller->setView($container->get(ViewEngineInterface::class));
         }
     }
 
