@@ -12,7 +12,7 @@ use Bone\Server\SiteConfigAwareInterface;
 use Bone\View\ViewAwareInterface;
 use Bone\View\ViewEngineInterface;
 use Del\SessionManager;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use JMS\Serializer\SerializerBuilder;
 use Laminas\I18n\Translator\Translator;
 use PDO;
@@ -44,7 +44,7 @@ class Init
     private static function entityManagerCheck(Controller $controller, Container $container): void
     {
         if (in_array('Bone\BoneDoctrine\EntityManagerAwareInterface', class_implements($controller))) {
-            $controller->setEntityManager($container->get(EntityManager::class));
+            $controller->setEntityManager($container->get(EntityManagerInterface::class));
         }
     }
 
