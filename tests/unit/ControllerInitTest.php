@@ -32,7 +32,7 @@ class ControllerInitTest extends Unit
         $controller = new FakeController();
         $controller = Init::controller($controller, $container);
         $this->assertInstanceOf(Translator::class, $controller->getTranslator());
-        $this->assertInstanceOf(ViewEngine::class, $controller->getView());
+        $this->assertInstanceOf(ViewEngineInterface::class, $controller->getView());
         $this->assertInstanceOf(SiteConfig::class, $controller->getSiteConfig());
         $this->assertInstanceOf(SessionManager::class, $controller->getSession());
         $this->assertInstanceOf(LoggerInterface::class, $controller->getLogger());
