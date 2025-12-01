@@ -3,19 +3,13 @@
 namespace Bone\Test\Controller;
 
 use Barnacle\Container;
-use Bone\Controller\ControllerException;
-use Bone\Controller\DownloadController;
 use Bone\Controller\Init;
 use Bone\Server\SiteConfig;
 use Bone\View\ViewEngine;
 use Bone\View\ViewEngineInterface;
-use Bone\Test\Controller\FakeController;
 use Codeception\Test\Unit;
 use Del\SessionManager;
-use Doctrine\ORM\EntityManager;
-use InvalidArgumentException;
-use Laminas\Diactoros\ServerRequest;
-use Laminas\Diactoros\Uri;
+use Doctrine\ORM\EntityManagerInterface;
 use Laminas\I18n\Translator\Translator;
 use PDO;
 use Psr\Log\LoggerInterface;
@@ -26,10 +20,10 @@ class ControllerInitTest extends Unit
     {
         $container = new Container();
         $container[Translator::class] = $this->makeEmpty(Translator::class);
-        $container[ViewEngine::class] = $this->makeEmpty(ViewEngine::class);
+        $container[ViewEngineInterface::class] = $this->makeEmpty(ViewEngineInterface::class);
         $container[SiteConfig::class] = $this->makeEmpty(SiteConfig::class);
         $container[PDO::class] = $this->makeEmpty(PDO::class);
-        $container[EntityManager::class] = $this->makeEmpty(EntityManager::class);
+        $container[EntityManagerInterface::class] = $this->makeEmpty(EntityManagerInterface::class);
         $container[SessionManager::class] = SessionManager::getInstance();
         $container[LoggerInterface::class] = [
             'default' => $this->getMockBuilder(LoggerInterface::class)->getMock()
@@ -43,7 +37,7 @@ class ControllerInitTest extends Unit
         $this->assertInstanceOf(SessionManager::class, $controller->getSession());
         $this->assertInstanceOf(LoggerInterface::class, $controller->getLogger());
         $this->assertInstanceOf(PDO::class, $controller->getDb());
-        $this->assertInstanceOf(EntityManager::class, $controller->getEntityManager());
+        $this->assertInstanceOf(EntityManagerInterface::class, $controller->getEntityManager());
     }
 }
 
