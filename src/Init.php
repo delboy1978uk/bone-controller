@@ -3,6 +3,7 @@
 namespace Bone\Controller;
 
 use Barnacle\Container;
+use Bone\Contracts\Service\TranslatorInterface;
 use Bone\Db\DbProviderInterface;
 use Bone\I18n\I18nAwareInterface;
 use Bone\Log\LoggerAwareInterface;
@@ -14,7 +15,6 @@ use Bone\View\ViewEngineInterface;
 use Del\SessionManager;
 use Doctrine\ORM\EntityManagerInterface;
 use JMS\Serializer\SerializerBuilder;
-use Laminas\I18n\Translator\Translator;
 use PDO;
 use Psr\Log\LoggerInterface;
 
@@ -51,7 +51,7 @@ class Init
     private static function i18nCheck(Controller $controller, Container $container): void
     {
         if ($controller instanceof I18nAwareInterface) {
-            $controller->setTranslator($container->get(Translator::class));
+            $controller->setTranslator($container->get(TranslatorInterface::class));
         }
     }
 
