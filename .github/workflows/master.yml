@@ -2,16 +2,16 @@ name: main
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['8.2', '8.3', '8.4']
+        php: ["8.2", "8.3", "8.4"]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,7 +41,7 @@ jobs:
         run: XDEBUG_MODE=coverage vendor/bin/codecept run unit --coverage-xml
 
       - name: Download Scrutinizer ocular.phar
-        run: composer require uma/ocular
+        run: composer global require uma/ocular --no-interaction --prefer-dist
 
       - name: Upload coverage
-        run: vendor/bin/ocular code-coverage:upload --format=php-clover tests/_output/coverage.xml
+        run: $HOME/.composervendor/bin/ocular code-coverage:upload --format=php-clover tests/_output/coverage.xml
