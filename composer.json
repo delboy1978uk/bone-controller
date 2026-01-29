@@ -36,7 +36,6 @@
             "Bone\\Test\\Controller\\": "tests/unit/"
         }
     },
-    "minimum-stability": "dev",
     "config": {
         "allow-plugins": {
             "phpro/grumphp": false
