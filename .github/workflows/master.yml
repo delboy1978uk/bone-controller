@@ -44,4 +44,4 @@ jobs:
         run: composer global require uma/ocular --no-interaction --prefer-dist
 
       - name: Upload coverage
-        run: $HOME/.composervendor/bin/ocular code-coverage:upload --format=php-clover tests/_output/coverage.xml
+        run: $HOME/.composer/vendor/bin/ocular code-coverage:upload --format=php-clover tests/_output/coverage.xml
